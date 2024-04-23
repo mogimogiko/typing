@@ -82,12 +82,12 @@ const rankCheck = score => {
     text = `あなたのランクはBです。\nAランクまであと${200 - score}文字です。`;
   } else if (score < 300) {
     text = `あなたのランクはAです。\nSランクまであと${300 - score}文字です。`;
-  } else if (score < 200) {
+  } else if (score >= 300) {
     text = `あなたのランクはSです。\nおめでとうございます!`;
   }
 
   // 生成したメッセージと一緒に文字列を返す
-  return`${score}文字打てました!\n【OK】リトライ / 【キャンセル】終了`;
+  return`${score}文字打てました!\n${text}【OK】リトライ / 【キャンセル】終了`;
 };
 
 // ゲームを終了
@@ -96,7 +96,7 @@ const gameOver = id => {
 
   const result = confirm(rankCheck(score));
 
-  // OKボタンんをクリックされたらリロードする
+  // OKボタンをクリックされたらリロードする
   if (result == true) {
     window.location.reload();
   }
